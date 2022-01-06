@@ -7,13 +7,14 @@ const fullMenuButton = document.getElementById("fullMenuButton");
 let starters = dishes.filter((dish) => dish.course === "Starters");
 let entrees = dishes.filter((dish) => dish.course === "Entrees");
 let desserts = dishes.filter((dish) => dish.course === "Desserts");
+let displayedMenu = dishes
 
-const dishList = dishes.map(function (dish) {
+const dishList = displayedMenu.map(function (dish) {
   return `<li>
     <h3>${dish.title}</h3>
     <p>${dish.description}</p>
     <p>${dish.price}</p>
-    <img src="${dish.imgURL}" width="30">
+    <img src="${dish.imageURL}">
     </li>`;
 });
 
@@ -24,7 +25,7 @@ const starterlist = starters.map(function (starter) {
       <h3>${starter.title}</h3>
       <p>${starter.description}</p>
       <p>${starter.price}</p>
-      <img src="${starter.imgURL}" width="30">
+      <img src="${starter.imageURL}">
       </li>`;
 });
 
@@ -37,7 +38,7 @@ const entreeslist = entrees.map(function (entrees) {
         <h3>${entrees.title}</h3>
         <p>${entrees.description}</p>
         <p>${entrees.price}</p>
-        <img src="${entrees.imgURL}" width="30">
+        <img src="${entrees.imageURL}">
         </li>`;
 });
 
@@ -50,10 +51,21 @@ const dessertslist = desserts.map(function (dessert) {
         <h3>${dessert.title}</h3>
         <p>${dessert.description}</p>
         <p>${dessert.price}</p>
-        <img src="${dessert.imgURL}" width="30">
+        <img src="${dessert.imageURL}">
         </li>`;
 });
 
 dessertsButton.addEventListener("click", function () {
   dishesList.innerHTML = dessertslist.join(" ");
 });
+const fullMenu = dishes.map(function (menuItem) {
+  return `<li>
+    <h3>${menuItem.title}</h3>
+    <p>${menuItem.description}</p>
+    <p>${menuItem.price}</p>
+    <img src="${menuItem.imageURL}">
+    </li>`;
+});
+fullMenuButton.addEventListener("click", function () {
+  dishesList.innerHTML = fullMenu.join(" ");
+})
